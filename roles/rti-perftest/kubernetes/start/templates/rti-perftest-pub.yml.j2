@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "rti-perftest-{{ rti_perftest_id }}-pub"
+  labels:
+    app: rti-perftest
+    role: pub
+    id: "{{ rti_perftest_id }}"
+spec:
+  replicas: {{ groups['kubernetes-masters'] | length }}
+  selector:
+    matchLabels:
+      app: rti-perftest
+      role: pub
+      id: "{{ rti_perftest_id }}"
+  template:
+    metadata:
+      labels:
+        app: rti-perftest
+        role: pub
+        id: "{{ rti_perftest_id }}"
+    spec:
+      containers:
+        - name: "rti-perftest-{{ rti_perftest_id }}-pub"
+          image: "{{ rti_perftest_image }}"
+          args:
+            - "-domain"
+            - "0"
+            - "-pub"
+            - "-enableTurboMode"
+            - "-dataLen"
+            - "1024"
+            - "-sleep"
+            - "1"
+            - "-verbosity"
+            - "2"
+          ports:
+            - containerPort: 7400
+              protocol: "UDP"
+              name: "rtps2-disc-mult"
+            - containerPort: 7401
+              protocol: "UDP"
+              name: "rtps2-disc-uni"
+            - containerPort: 7410
+              protocol: "UDP"
+              name: "rtps2-data-mult"
+            - containerPort: 7411
+              protocol: "UDP"
+              name: "rtps2-data-uni"

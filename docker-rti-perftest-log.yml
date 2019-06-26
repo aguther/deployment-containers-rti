@@ -1,0 +1,8 @@
+---
+- hosts: centos[0]
+  roles:
+    - rti-perftest/docker/log/publisher
+
+- hosts: centos
+  roles:
+    - rti-perftest/docker/log/subscriber

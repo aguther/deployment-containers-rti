@@ -1,0 +1,8 @@
+---
+- name: copy
+  copy:
+    src: "{{ playbook_dir }}/tools/cpuloadgen"
+    dest: /bin/cpuloadgen
+    owner: root
+    group: root
+    mode: 0755

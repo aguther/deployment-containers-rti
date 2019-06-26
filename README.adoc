@@ -1,0 +1,2 @@
+= deployment-containers-rti
+Repository to test RTI Connext DDS with container technologies (docker, kubernetes, nomad).

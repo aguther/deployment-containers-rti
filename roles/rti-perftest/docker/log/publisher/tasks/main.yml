@@ -1,0 +1,12 @@
+---
+- name: log
+  command: "docker logs --tail 10 rti-perftest-pub"
+  register: docker_log
+
+- name: print stdout
+  debug:
+    msg: "{{ docker_log.stdout }}"
+
+- name: print stderr
+  debug:
+    msg: "{{ docker_log.stderr }}"

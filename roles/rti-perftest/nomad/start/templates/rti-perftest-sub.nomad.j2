@@ -1,0 +1,36 @@
+job "rti-perftest-sub" {
+  type = "service"
+
+  datacenters = ["dc-1", "dc-2"]
+
+  group "sub" {
+    count = 1
+
+    restart {
+      attempts = 10
+      interval = "5m"
+      delay = "25s"
+      mode = "delay"
+    }
+
+    task "sub" {
+      driver = "docker"
+
+      config {
+        image = "guther/rti-perftest"
+        args = [
+          "-sub",
+        ]
+        network_mode = "weave"
+      }
+
+      resources {
+        cpu    = 500
+        memory = 500
+        network {
+          mbits = 1000
+        }
+      }
+    }
+  }
+}

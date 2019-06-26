@@ -1,0 +1,41 @@
+job "rti-perftest-pub" {
+  type = "service"
+
+  datacenters = ["dc-1", "dc-2"]
+
+  group "pub" {
+    count = 1
+
+    restart {
+      attempts = 10
+      interval = "5m"
+      delay = "25s"
+      mode = "delay"
+    }
+
+    task "pub" {
+      driver = "docker"
+
+      config {
+        image = "guther/rti-perftest"
+        args = [
+          "-pub",
+          "-enableTurboMode",
+          "-dataLen",
+          "1024",
+          "-sleep",
+          "1",
+        ]
+        network_mode = "weave"
+      }
+
+      resources {
+        cpu    = 500
+        memory = 500
+        network {
+          mbits = 1000
+        }
+      }
+    }
+  }
+}
