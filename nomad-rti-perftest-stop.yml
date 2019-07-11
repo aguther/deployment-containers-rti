@@ -1,4 +1,4 @@
 ---
-- hosts: kubernetes-masters
+- hosts: datacenter-1[0]
   roles:
     - rti-perftest/nomad/stop

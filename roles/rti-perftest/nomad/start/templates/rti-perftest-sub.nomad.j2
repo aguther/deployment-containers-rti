@@ -7,10 +7,17 @@ job "rti-perftest-sub" {
     count = 1
 
     restart {
-      attempts = 10
-      interval = "5m"
-      delay = "25s"
+      attempts = 5
+      interval = "30s"
+      delay = "5s"
       mode = "delay"
+    }
+
+    reschedule {
+      delay          = "15s"
+      delay_function = "exponential"
+      max_delay      = "60m"
+      unlimited      = true
     }
 
     task "sub" {
