@@ -22,4 +22,4 @@
       - key: routingService.service.ip
         value: "{{ routingService_service_ip }}"
   roles:
-    - helm/install-chart
+    - helm/chart/install
