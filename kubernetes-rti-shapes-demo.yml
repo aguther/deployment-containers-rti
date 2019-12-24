@@ -2,11 +2,11 @@
 - hosts:
     - kubernetes-masters[0]
   vars:
-    routingService_service_ip: 192.168.108.230
+    routingService_service_ip: 192.168.8.210
     imageCredentials_registry: "{{ docker_load_push_images_registry_url }}"
     helm_install_namespace: rti-shapes-demo
     helm_install_name: rti-shapes-demo
-    helm_install_chart: https://github.com/aguther/helm-charts/raw/master/rti-shapes-demo-2.0.0.tgz
+    helm_install_chart: https://github.com/aguther/helm-charts/raw/6.0.0/rti-shapes-demo-2.1.0.tgz
     helm_install_wait: yes
     helm_install_set:
       - key: imageCredentials.name
