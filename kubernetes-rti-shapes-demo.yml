@@ -18,6 +18,8 @@
         value: yes
       - key: persistenceService.storage.className
         value: rook-ceph-block
+      - key: routingService.enabled
+        value: yes
       - key: routingService.service.type
         value: LoadBalancer
       - key: routingService.service.ip
