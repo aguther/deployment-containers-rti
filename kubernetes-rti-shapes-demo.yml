@@ -1,6 +1,6 @@
 ---
 - hosts:
-    - kubernetes-masters[0]
+    - kubernetes_masters[0]
   vars:
     routingService_service_ip: 192.168.8.210
     webIntegrationService_service_ip: 192.168.8.211
