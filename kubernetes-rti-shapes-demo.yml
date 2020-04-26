@@ -43,6 +43,6 @@
       - key: ddsExamples.enabled
         value: yes
       - key: prometheusCollectors.enabled
-        value: no
+        value: yes
   roles:
     - helm/chart/install
